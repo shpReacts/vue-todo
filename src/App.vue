@@ -1,26 +1,61 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <h1 class="title">todos</h1>
+  <Todos />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Todos from '@/components/Todos';
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
+  name: 'App',
+  components: { Todos },
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '@/assets/colors';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media only screen and (max-width: 720px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-vue-green;
+  background-color: $color-vue-blue;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem 0;
+
+  @media only screen and (max-width: 800px) {
+    padding: 3rem 0;
+  }
+}
+
+.title {
+  font-size: 10rem;
+  font-weight: 100;
+  line-height: 1;
+  margin-bottom: 3rem;
 }
 </style>

@@ -1,24 +1,9 @@
-# vue3
+# VUE TODO
 
-## Project setup
-```
-npm install
-```
+My first VueJS App
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## TODO
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Implement Vue 3 Composition API
+- Persist data (localStorage)
+- Use State Management (Vuex)
