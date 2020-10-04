@@ -30,7 +30,7 @@ export default {
   components: { CreateTodo, TodoItem, TodoFooter },
   data() {
     return {
-      todos: [],
+      todos: JSON.parse(localStorage.getItem('todos')) || [],
       displayMode: 'all',
     };
   },
@@ -68,9 +68,11 @@ export default {
 
       this.todos.push(newTodo);
       this.newTodoText = '';
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     checkAllTodos() {
       if (this.todos.every(todo => todo.done)) {
@@ -83,12 +85,14 @@ export default {
       this.todos = this.todos.map(todo =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
       );
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     changeMode(displayMode) {
       this.displayMode = displayMode;
     },
     clearDone() {
       this.todos = this.todos.filter(todo => !todo.done);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     // https://forum.vuejs.org/t/transition-group-leave-transition-w-position-absolute-jumping-to-top-left-flip/12258/4
     beforeLeave(el) {
