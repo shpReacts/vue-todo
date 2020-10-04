@@ -1,6 +1,6 @@
 <template>
   <div class="todo">
-    <CreateTodo @add-todo="addTodo" @check-all="checkAllTodos" />
+    <CreateTodo @add-todo="addTodo" />
     <TodoFooter
       :leftTodoCount="leftTodoCount"
       :displayMode="displayMode"
@@ -56,6 +56,10 @@ export default {
   },
   methods: {
     addTodo(newTodoText) {
+      if (newTodoText === '') {
+        return;
+      }
+
       const newTodo = {
         id: Math.floor(Math.random() * 100000),
         text: newTodoText,

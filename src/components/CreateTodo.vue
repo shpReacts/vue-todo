@@ -1,17 +1,17 @@
 <template>
   <div class="create-todo">
-    <BaseSvgButton
-      class="create-todo__btn"
-      @click="$emit('check-all')"
-      :svgSrc="checkAllIcon"
-      alt="check all"
-    />
     <input
       class="create-todo__input"
       type="text"
       placeholder="What needs to be done?"
-      v-model="newTodoText"
+      v-model.trim="newTodoText"
       @keydown.enter="addTodo"
+    />
+    <BaseSvgButton
+      class="create-todo__btn"
+      @click="addTodo"
+      :svgSrc="plusIcon"
+      alt="check all"
     />
   </div>
 </template>
@@ -19,7 +19,7 @@
 <script>
 import BaseSvgButton from '@/components/BaseSvgButton';
 
-import checkAllIcon from '@/assets/done_all.svg';
+import plusIcon from '@/assets/plus.svg';
 
 export default {
   name: 'CreateTodo',
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       newTodoText: '',
-      checkAllIcon,
+      plusIcon,
     };
   },
   methods: {
